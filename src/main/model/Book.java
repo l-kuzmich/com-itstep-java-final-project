@@ -7,12 +7,12 @@ public class Book {
     private long id;
     private String title;
     private String author;
-    private LocalDate yearOfRelease;
+    private int yearOfRelease;
     private BookGenre genre;
     private int countOfPages;
     private double price;
 
-    public Book(long id, String title, String author, LocalDate yearOfRelease, BookGenre genre, int countOfPages, double price) {
+    public Book(long id, String title, String author, int yearOfRelease, BookGenre genre, int countOfPages, double price) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -46,11 +46,11 @@ public class Book {
         this.author = author;
     }
 
-    public LocalDate getYearOfRelease() {
+    public int getYearOfRelease() {
         return yearOfRelease;
     }
 
-    public void setYearOfRelease(LocalDate yearOfRelease) {
+    public void setYearOfRelease(int yearOfRelease) {
         this.yearOfRelease = yearOfRelease;
     }
 

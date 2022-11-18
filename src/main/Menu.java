@@ -8,14 +8,18 @@ public class Menu {
 
     public Map<Integer, String> generateAdminMenu(){
         adminMenu.put(1, "Add book in db");
+        adminMenu.put(2, "");
 
 
         return adminMenu;
     }
 
     public void generateUserMenu(){
-        userMenu.put(1, "Show data");
-        userMenu.put(2, "Admin menu");
+        userMenu.put(1, "Show book db");
+        userMenu.put(2, "Show customer db");
+        userMenu.put(3, "Search book");
+        userMenu.put(4, "Log out");
+        userMenu.put(5, "Close program");
     }
 
     public void showAdminMenu(){
