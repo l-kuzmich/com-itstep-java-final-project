@@ -1,17 +1,18 @@
 package model;
 
+import java.time.LocalDate;
+import java.util.Scanner;
+
 public class Order {
+
+    Scanner scanner = new Scanner(System.in);
     private long id;
     private long employeeId;
     private long customerId;
-    private long [] books;
-
-    public Order(long id, long employeeId, long customerId, long[] books) {
-        this.id = id;
-        this.employeeId = employeeId;
-        this.customerId = customerId;
-        this.books = books;
-    }
+    private long bookId;
+    private LocalDate purchaseDate;
+    private int booksCount;
+    private double price;
 
     public long getId() {
         return id;
@@ -25,23 +26,53 @@ public class Order {
         return employeeId;
     }
 
-    public void setEmployeeId(long employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployeeId() {
+        System.out.print("Employee id: ");
+        this.employeeId = scanner.nextLong();
     }
 
     public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
+    public void setCustomerId() {
+        System.out.print("Customer id: ");
+        this.customerId = scanner.nextLong();
     }
 
-    public long[] getBooks() {
-        return books;
+    public long getBookId() {
+        return bookId;
     }
 
-    public void setBooks(long[] books) {
-        this.books = books;
+    public void setBookId() {
+        System.out.print("Book id: ");
+        this.bookId = scanner.nextLong();
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate() {
+        System.out.print("Date (yyyy mm dd): ");
+        this.purchaseDate = LocalDate.of(scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+    }
+
+    public int getBooksCount() {
+        return booksCount;
+    }
+
+    public void setBookCount() {
+        System.out.print("Product count: ");
+        this.booksCount = scanner.nextInt();
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice() {
+        System.out.print("Total price: ");
+        this.price = scanner.nextDouble();
     }
 }

@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class MainClass {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
 
-        MenuController menuController = new MenuController();
-        menuController.checkRole();
+       MenuController controller = new MenuController();
+       controller.checkRole();
 
 
     }

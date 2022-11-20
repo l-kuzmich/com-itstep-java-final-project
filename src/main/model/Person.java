@@ -1,14 +1,15 @@
 package model;
 
+import java.util.Scanner;
+
 public class Person {
     private long id;
     private String name;
     private int age;
 
-    public Person(long id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
+    Scanner scanner= new Scanner(System.in);
+    public Person() {
+
     }
 
     public long getId() {
@@ -23,15 +24,17 @@ public class Person {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName() {
+        System.out.print("Name: ");
+        this.name = scanner.nextLine();
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge() {
+        System.out.print("Age: ");
+        this.age = scanner.nextInt();
     }
 }

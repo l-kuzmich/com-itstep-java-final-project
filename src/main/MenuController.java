@@ -1,22 +1,24 @@
 import model.Book;
-import model.BookGenre;
+import model.Customer;
+import model.Employee;
+import model.Order;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.Scanner;
 
 public class MenuController implements CheckRole {
     Menu menu = new Menu();
     Scanner scanner = new Scanner(System.in);
 
+    DBManager dbManager = new DBManager();
+
     Role role;
 
     public void userMenuController() {
-        menu.showUserMenu();
+        System.out.println("Welcome to user menu\n");
+        menu.showMenu(menu.generateUserMenu());
         int menuPoint = menu.getMenuPointer();
         switch (menuPoint) {
             case 1: {
-                DBManager dbManager = new DBManager();
                 dbManager.showBooks();
                 userMenuController();
             }
@@ -38,23 +40,111 @@ public class MenuController implements CheckRole {
         }
     }
 
-    public void adminMenuController() throws Exception {
-        menu.showAdminMenu();
+    public void adminMenuController() {
+        System.out.println("Welcome to admin menu\n");
+        menu.showMenu(menu.generateAdminMenu());
         int adminMenuPoint = menu.getMenuPointer();
         switch (adminMenuPoint) {
             case 1: {
-                Book g = new Book(1, "Gone with the wind", "Margaret Mitchell", 1936, BookGenre.Novel, 1037, 300);
-
-                DBManager dbManager = new DBManager();
-                dbManager.insertBook(g);
-
-                adminMenuController();
+               adminAddSubmenuController();
+               adminMenuController();
             }
             case 2: {
 
             }
+            case 3: {
+                adminDeleteSubmenuController();
+                adminMenuController();
+            }
+            case 4: {
+                checkRole();
+            }
+            case 5: {
+                System.exit(0);
+            }
             default: {
                 System.out.println("Not a menu point");
+            }
+        }
+    }
+
+    public void adminAddSubmenuController(){
+        menu.showMenu(menu.generateAdminAddSubmenu());
+        int adminAddSubmenuPoint = menu.getMenuPointer();
+        switch (adminAddSubmenuPoint) {
+            case 1: {
+                Book newBook = new Book();
+                newBook.setTitle();
+                newBook.setAuthor();
+                newBook.setYearOfRelease();
+                newBook.setGenre();
+                newBook.setCountOfPages();
+                newBook.setPrice();
+
+                dbManager.insertBook(newBook);
+                adminAddSubmenuController();
+            }
+            case 2: {
+                Customer newCustomer = new Customer();
+                newCustomer.setName();
+                newCustomer.setAge();
+
+                dbManager.insertCustomer(newCustomer);
+                adminAddSubmenuController();
+            }
+            case 3: {
+                Employee newEmployee = new Employee();
+                newEmployee.setName();
+                newEmployee.setAge();
+                newEmployee.setPost();
+
+                dbManager.insertEmployee(newEmployee);
+                adminAddSubmenuController();
+            }
+            case 4: {
+                Order newOrder = new Order();
+                newOrder.setEmployeeId();
+                newOrder.setCustomerId();
+                newOrder.setBookId();
+                newOrder.setPurchaseDate();
+                newOrder.setBookCount();
+                newOrder.setPrice();
+
+                dbManager.insertOrder(newOrder);
+                adminAddSubmenuController();
+            }
+            case 5: {
+                adminMenuController();
+            }
+        }
+    }
+
+    public void adminDeleteSubmenuController() {
+        menu.showMenu(menu.generateAdminDeleteSubmenu());
+        int adminDeleteSubmenuPoint = menu.getMenuPointer();
+        switch (adminDeleteSubmenuPoint) {
+            case 1: {
+                System.out.print("Book id: ");
+                dbManager.deleteBookById("book", scanner.nextInt());
+                adminDeleteSubmenuController();
+            }
+            case 2:{
+                System.out.print("Customer id: ");
+                dbManager.deleteBookById("customer", scanner.nextInt());
+                adminDeleteSubmenuController();
+            }
+            case 3:{
+                System.out.print("Employee id: ");
+                dbManager.deleteBookById("employee", scanner.nextInt());
+                adminDeleteSubmenuController();
+            }
+            case 4:{
+                System.out.print("Order id: ");
+                dbManager.deleteBookById("order", scanner.nextInt());
+                adminDeleteSubmenuController();
+            }
+            case 5:{
+                adminMenuController();
             }
         }
     }
