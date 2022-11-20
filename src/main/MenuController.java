@@ -60,6 +60,9 @@ public class MenuController implements CheckRole {
             case 5: {
                 userMenuController();
             }
+            default: {
+                System.out.println("Not a menu point");
+            }
         }
     }
 
@@ -80,6 +83,9 @@ public class MenuController implements CheckRole {
             }
             case 3: {
                 userMenuController();
+            }
+            default: {
+                System.out.println("Not a menu point");
             }
         }
     }
@@ -161,6 +167,9 @@ public class MenuController implements CheckRole {
             case 5: {
                 adminMenuController();
             }
+            default: {
+                System.out.println("Not a menu point");
+            }
         }
     }
 
@@ -224,6 +233,9 @@ public class MenuController implements CheckRole {
             case 5: {
                 adminMenuController();
             }
+            default: {
+                System.out.println("Not a menu point");
+            }
         }
     }
 
@@ -254,6 +266,9 @@ public class MenuController implements CheckRole {
             case 5:{
                 adminMenuController();
             }
+            default: {
+                System.out.println("Not a menu point");
+            }
         }
     }
 
@@ -271,9 +286,6 @@ public class MenuController implements CheckRole {
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-            }
-            default: {
-                System.out.println("Something was wrong");
             }
         }
     }
