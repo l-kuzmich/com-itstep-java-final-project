@@ -6,22 +6,12 @@ public class Book {
 
     Scanner scanner = new Scanner(System.in);
 
-    private long id;
     private String title;
     private String author;
     private int yearOfRelease;
     private String genre;
     private int countOfPages;
     private double price;
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

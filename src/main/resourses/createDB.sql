@@ -17,7 +17,9 @@ INSERT Book (Title, Author, YearOFRelease, Genre, CountOfPage, Price)
 values ('The Alchemist', 'Paulo Coelho', '1988', 'Novel', 163, 869.3),
        ('The Great Gatsby', 'F. Scott Fitzgerald', '1925', 'History', 180, 994),
        ('The Grapes of Wrath', 'John Steinbeck', '1939', 'History', 455, 963),
-       ('One Hundred Years of Solitude', 'Gabriel García Márquez', '1967', 'Fantasy', 432, 667);
+       ('One Hundred Years of Solitude', 'Gabriel García Márquez', '1967', 'Fantasy', 432, 667),
+       ('Gone Girl', 'Gillian Flynn', '2014', 'Novel', 464, 200),
+       ('Sharp Objects', 'Gillian Flynn', '2007', 'Thriller', 354, 140);
 
 CREATE TABLE Customer
 (

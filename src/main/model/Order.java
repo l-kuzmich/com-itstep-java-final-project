@@ -6,21 +6,12 @@ import java.util.Scanner;
 public class Order {
 
     Scanner scanner = new Scanner(System.in);
-    private long id;
     private long employeeId;
     private long customerId;
     private long bookId;
     private LocalDate purchaseDate;
     private int booksCount;
     private double price;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getEmployeeId() {
         return employeeId;
