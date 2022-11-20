@@ -8,9 +8,7 @@ import java.util.Scanner;
 public class MenuController implements CheckRole {
     Menu menu = new Menu();
     Scanner scanner = new Scanner(System.in);
-
     DBManager dbManager = new DBManager();
-
     Role role;
 
     public void userMenuController() {
@@ -19,23 +17,69 @@ public class MenuController implements CheckRole {
         int menuPoint = menu.getMenuPointer();
         switch (menuPoint) {
             case 1: {
-                dbManager.showBooks();
+                userShowSubmenuController();
                 userMenuController();
             }
             case 2: {
-
+                userSearchSubmenuController();
+                userMenuController();
             }
             case 3: {
-
-            }
-            case 4: {
                 checkRole();
             }
-            case 5: {
+            case 4: {
                 System.exit(0);
             }
             default: {
                 System.out.println("Not a menu point");
+            }
+        }
+    }
+
+    public void userShowSubmenuController(){
+        menu.showMenu(menu.generateUserShowSubmenu());
+        int userShowSubmenuPoint = menu.getMenuPointer();
+
+        switch (userShowSubmenuPoint){
+            case 1: {
+                dbManager.showBooks();
+                userShowSubmenuController();
+            }
+            case 2: {
+                dbManager.showCustomers();
+                userShowSubmenuController();
+            }
+            case 3: {
+                dbManager.showEmployee();
+                userShowSubmenuController();
+            }
+            case 4: {
+                dbManager.showOrders();
+                userShowSubmenuController();
+            }
+            case 5: {
+                userMenuController();
+            }
+        }
+    }
+
+    public void userSearchSubmenuController(){
+        menu.showMenu(menu.generateUserSearchSubmenu());
+        int userSearchSubmenuPoint = menu.getMenuPointer();
+
+        switch (userSearchSubmenuPoint){
+            case 1: {
+                System.out.print("Author: ");
+                dbManager.searchBookByAuthor(scanner.nextLine());
+                userSearchSubmenuController();
+            }
+            case 2: {
+                System.out.print("Maximum price: ");
+                dbManager.filterBookByPrice(scanner.nextInt());
+                userSearchSubmenuController();
+            }
+            case 3: {
+                userMenuController();
             }
         }
     }
@@ -50,7 +94,8 @@ public class MenuController implements CheckRole {
                adminMenuController();
             }
             case 2: {
-
+                adminChangeSubmenuController();
+                adminMenuController();
             }
             case 3: {
                 adminDeleteSubmenuController();
@@ -112,6 +157,69 @@ public class MenuController implements CheckRole {
 
                 dbManager.insertOrder(newOrder);
                 adminAddSubmenuController();
+            }
+            case 5: {
+                adminMenuController();
+            }
+        }
+    }
+
+    public void adminChangeSubmenuController(){
+        menu.showMenu(menu.generateAdminChangeSubmenu());
+        int adminChangeSubmenuPoint = menu.getMenuPointer();
+        switch (adminChangeSubmenuPoint) {
+            case 1: {
+                System.out.print("id: ");
+                int id = scanner.nextInt();
+
+                Book newBook = new Book();
+                newBook.setTitle();
+                newBook.setAuthor();
+                newBook.setYearOfRelease();
+                newBook.setGenre();
+                newBook.setCountOfPages();
+                newBook.setPrice();
+
+                dbManager.changeBook(newBook, id);
+                adminChangeSubmenuController();
+            }
+            case 2: {
+                System.out.print("id: ");
+                int id = scanner.nextInt();
+
+                Customer newCustomer = new Customer();
+                newCustomer.setName();
+                newCustomer.setAge();
+
+                dbManager.changeCustomer(newCustomer, id);
+                adminChangeSubmenuController();
+            }
+            case 3: {
+                System.out.print("id: ");
+                int id = scanner.nextInt();
+
+                Employee newEmployee = new Employee();
+                newEmployee.setName();
+                newEmployee.setAge();
+                newEmployee.setPost();
+
+                dbManager.changeEmployee(newEmployee, id);
+                adminChangeSubmenuController();
+            }
+            case 4: {
+                System.out.print("id: ");
+                int id = scanner.nextInt();
+
+                Order newOrder = new Order();
+                newOrder.setEmployeeId();
+                newOrder.setCustomerId();
+                newOrder.setBookId();
+                newOrder.setPurchaseDate();
+                newOrder.setBookCount();
+                newOrder.setPrice();
+
+                dbManager.changeOrder(newOrder, id);
+                adminChangeSubmenuController();
             }
             case 5: {
                 adminMenuController();
